@@ -90,7 +90,8 @@ def main(args):
                     single_gazette(pdf_directory, url)
                 
                 except urllib.request.HTTPError: #this pdf does not exist
-                    print(url, ' does not exist!')
+                    pass
+                    #print(url, ' does not exist!')
 
 
 
