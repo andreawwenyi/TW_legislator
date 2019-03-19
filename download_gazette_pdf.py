@@ -1,7 +1,7 @@
 import urllib.request
 import argparse
 import os
-from tmux import tmux
+from tqdm import tqdm
 
 def make_url(y, vol, p, url_skeleton):
     assert(vol > 0), "vol must be greater than 0"
@@ -79,7 +79,7 @@ def main(args):
     
     v_last = min(args.v_last, max_vol)
     
-    for v in tmux(range(v_first,v_last+1)):
+    for v in tqdm(range(v_first,v_last+1)):
 
         for p in (1,2):
             url = make_url(int(y), int(v), int(p), url_skeleton)
