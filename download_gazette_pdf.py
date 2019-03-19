@@ -1,6 +1,7 @@
 import urllib.request
 import argparse
 import os
+from tmux import tmux
 
 def make_url(y, vol, p, url_skeleton):
     assert(vol > 0), "vol must be greater than 0"
@@ -74,9 +75,11 @@ def main(args):
     else: #if max volumne is not passed, search
         max_vol = max_vol_of_year(url_skeleton, y, v_search_start)
     
+    print(max_vol)
+    
     v_last = min(args.v_last, max_vol)
     
-    for v in range(v_first,v_last+1):
+    for v in tmux(range(v_first,v_last+1)):
 
         for p in (1,2):
             url = make_url(int(y), int(v), int(p), url_skeleton)
