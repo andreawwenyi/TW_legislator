@@ -1,5 +1,8 @@
 # TW_legislator
 
+Enviornment<br>
+python3.6
+
 ## download pdfs 下載立院公報
 *download_gazette_pdf.py* -- to download the gazette pdfs 
 
@@ -18,4 +21,12 @@ Optional: <br>
 python3 download_gazette_pdf.py \
 --year 105 \
 --max_vol 105 \
+```
+
+### pdfs to txt 將立院公報PDF檔轉成txt檔
+
+```
+pip install pdfminer.six
+cd gazette_pdfs
+for a in * ; do pdf2txt.py -o ../gazette_txts/${a%.*}.txt $a ; done
 ```
