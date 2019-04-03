@@ -1,5 +1,6 @@
 import pickle as pk
 import os
+import argparse
 
 def txt2lines(path_to_txt, output_dir, pickle = True):
     txt = open(path_to_txt, encoding='utf-8').read()
@@ -18,8 +19,14 @@ def txt2lines(path_to_txt, output_dir, pickle = True):
         return None
     return txt_lines
 
-def main():
-    txt2lines('gazette_txts/1050102.txt', 'gazette_lines', pickle = True)
+def main(args):
+    txt2lines(args.input_path, args.output_dir, args.pickle)
     
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--input_path", help="path to input txt file")
+    parser.add_argument("-o", "--output_dir", help="directory to save output",
+                    default="./gazette_lines/")    
+    parser.add_argument("-pk", "--pickle", help="if pickle output file", type = bool, default = True)
+    args = parser.parse_args()
+    main(args)
