@@ -30,3 +30,9 @@ pip install pdfminer.six
 cd gazette_pdfs
 for a in * ; do pdf2txt.py -o ../gazette_txts/${a%.*}.txt $a ; done
 ```
+
+### txt to lines 將立院公報txt檔整理後轉成list of lines並pickle
+```
+cd TW_legislator
+for a in gazette_txts/* ; do txt2lines.py -i $a ; done
+```
